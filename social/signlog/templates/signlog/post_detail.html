@@ -1,0 +1,21 @@
+{% extends 'group/gpbase.html' %}
+{% block body_block %}
+<h1 style="color: rgb(240, 3, 3);">My Posts in Group {{post_detail.name}}</h1>
+<br>
+<ol style="margin-left: 25px;">
+{% for post in post_detail.posts.all  %}
+{% ifequal post.created_by request.user.username %}
+<h3 style="font-weight: 600;"><li>{{post.Message}}</li></h3>
+<p >{{user.get_username}}</p>
+<p ><a href="{% url 'signlog:postlist' pk=post.pk %}">@{{user.get_username}}</a> {{post.dt}} in <a href="{% url 'signlog:groupdetail' pk=post.Group.pk %}">{{post.Group.name}}</a></p>
+    <br>
+   
+<button type="button" class="btn btn-danger"><a style="color: white;" href="{% url 'signlog:delpost' pk=post.pk %}">Delete</a></button>
+<hr>
+{% endifequal %}
+
+{% endfor %}
+</ol>
+{% endblock %}
+
+<!-- This is the page after create post -->

@@ -1,0 +1,24 @@
+{% extends 'group/gpbase.html' %}
+{% block body_block %}
+<h1 style="font-weight: 200;">Groups</h2>
+<p>Welcome to the Groups Page!</p>
+<button type="button" class="btn btn-info"><a style="color: white;" href="{% url 'signlog:groups' %}">Create New Group!</a></button>
+<br>
+<br>
+<h3 style="font-weight: 700;">List of Groups:</h3>
+<div class="jumbotron">
+    <ol>
+        {% for list in ug_list%}
+        <h2 style="font-weight: 300;"><li><a href="{% url 'signlog:detail' pk=list.pk %}">{{list.name}}</a></li></h2>
+            <p><span style="font-weight: 600;">Description:</span>{{list.desc}}</p>
+            <p><span style="font-weight: 600;">Members:</span>{{list.cjoin}}</p>
+            <p><span style="font-weight: 600;">Posts:</span>{{list.cpost}}</p>
+        
+        <br>
+        {% endfor %}
+        </ol>
+</div>
+
+
+{% endblock %}
+<!-- <span style="font-weight: 600;">Description:</span> -->

@@ -1,0 +1,13 @@
+{% extends 'base1.html' %}
+{% block body_block %}
+<h1>List Of Groups:</h1>
+<ol>
+{% for grp in Ngroups %}
+    <li><p style="font-weight: 700;">{{grp.name}}</p> 
+        <p style="font-weight: 400;">Description:{{grp.desc}}</p> 
+        <p style="font-weight: 400;">Members:{{grp.cjoin}}</p> 
+        <p style="font-weight: 400;">Posts:{{grp.cpost}}</p> 
+    </li>
+    {% endfor %}
+</ol>
+{% endblock %}

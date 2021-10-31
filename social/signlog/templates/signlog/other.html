@@ -1,0 +1,20 @@
+{% extends 'group/gpbase.html' %}
+{% block body_block %}
+ {% for post in obj %}
+ <p> {{post.Message}} </p>
+ {% endfor %}
+{% endblock %}
+
+{% comment %} This the page of post history of a current user logged in {% endcomment %}
+{% comment %} <h1 style="font-weight: 600;">@{{user.get_username}}</h1>
+<p style="font-weight: 600;">Post History</p>
+{% for post in post_list  %}
+{% ifequal post.created_by request.user.username %}
+<h1>{{post.Message}}</h1>
+<p style="font-weight: 600;">{{user.get_username}}</p>
+<p style="font-weight: 600;"><a href="{% url 'signlog:postlist' %}">@{{user.get_username}}</a> {{post.dt}} in <a href="{% url 'signlog:groupdetail' pk=post.Group.pk %}">{{post.Group.name}}</a></p>
+    <br>
+<button type="button" class="btn btn-danger"><a href="{% url 'signlog:delpost' pk=post.pk %}">Delete</a></button>
+<hr>
+{% endifequal %}
+{% endfor %} {% endcomment %}

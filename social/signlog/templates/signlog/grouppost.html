@@ -1,0 +1,25 @@
+{% extends 'group/gpbase.html' %}
+{% block body_block %}
+<h2 style="font-weight: 900; color: rgb(99, 35, 142);" >Posts from all the Groups</h2>
+<br>
+<ol style="margin-left: 20px;">
+{% for group in grouppost %}
+{% for post in group.posts.all %}
+<h3 style="font-weight: 600;"><li>{{post.Message}}</li></h3>
+<p style="font-weight: 600;">{{post.created_by}}</p>
+<p style="font-weight: 600;"><a href="{% url 'signlog:postlist' pk=post.pk %}">@{{post.created_by}}</a> {{post.dt}} in
+    <a href="{% url 'signlog:groupdetail' pk=post.Group.pk %}">{{post.Group.name}}</a></p>
+<hr>
+{%endfor%}
+{%endfor%}
+</ol>
+
+
+
+
+{% endblock %}
+
+
+
+
+<!-- This is template to show all posts from all the group -->

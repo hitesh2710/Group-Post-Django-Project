@@ -1,0 +1,12 @@
+{% extends 'group/gpbase.html' %}
+{% block body_block %}
+<h1 style="text-align: center;">Create A New Post</h1>
+<br>
+</h1>
+<form style="text-align: center;" method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type='submit' class="btn btn-success" value="POST" >
+</form>
+
+{% endblock %}

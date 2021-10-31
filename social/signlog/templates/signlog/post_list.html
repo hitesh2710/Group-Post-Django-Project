@@ -1,0 +1,22 @@
+{% extends 'group/gpbase.html' %}
+{% block body_block %}
+<h1 style="color:mediumorchid;font-weight: 600;">@{{name}}</h1>
+<h2 style="color:mediumorchid; font-weight: 600;">Post History</h2>
+<br>
+<ol style="margin-left: 20px;">
+{% for post in obj  %}
+{% comment %} {% ifequal post.created_by request.user.username %} {% endcomment %}
+<h3><li style="font-weight: 600;">{{post.Message}}</li></h3>
+<p >{{post.created_by}}</p>
+<p ><a href="{% url 'signlog:postlist' pk=post.pk %}">@{{post.created_by}}</a> {{post.dt}} in <a href="{% url 'signlog:groupdetail' pk=post.Group.pk %}">{{post.Group.name}}</a></p>
+    <br>
+    {%ifequal request.user.username post.created_by%}
+<button type="button" class="btn btn-danger"><a href="{% url 'signlog:delpost' pk=post.pk %}">Delete</a></button>
+{% endifequal %}
+<hr>
+{% comment %} {% endifequal %} {% endcomment %}
+{% endfor %}
+</ol>
+{% endblock %}
+
+{% comment %} This the page of post history of a  user logged in {% endcomment %}

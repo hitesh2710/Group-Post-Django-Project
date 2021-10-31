@@ -1,0 +1,25 @@
+{% extends 'group/gpbase.html' %}
+ {% block body_block %}
+<p style="text-align: center; font-size: 2em;" >Create A New Group<p>
+  <br>
+ 
+{% comment %} <h1 style="width: 100%;display: flex;justify-content: center;">Sign Up</h1> {% endcomment %}
+<br>
+<br>
+  <div class="container" style="margin-top: 4rem;">
+    <div class="ff"  style="display: flex;justify-content: center;position: relative; align-items: center;margin-top: 5rem;margin-left: -14rem;">
+
+    
+   <form method="POST" style="display: flex;justify-content: space-evenly;align-items: center;flex-direction: column;position:absolute; padding-left:10rem;">
+       {%csrf_token%}
+       {{form.as_p}}
+       <input type="submit" name='btn btn-success' value="Submit">
+   </form>
+    </div>
+  </div>
+</div>
+    {% endblock %}
+
+
+    
+    

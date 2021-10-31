@@ -1,0 +1,39 @@
+{% extends 'group/gpbase.html' %}
+{% block body_block %}
+<form method="POST">
+   <ol class='jumbotron'>
+   <h1>{{groups_detail.name}}</h1>
+       <h3>{{groups_detail.desc}}</h3>
+       <p>Members: {{groups_detail.cjoin}}
+       <p>Posts: {{groups_detail.cpost}}
+       <br>
+       <br>
+      {% if request.user.username in groups_detail.usrname %}
+      {%if request.user.username in groups_detail.usrrname %}
+       <button type="button" class="btn btn-warning"><a href="{% url 'signlog:updatejoin' pk=groups_detail.pk %}">Join</a></button>
+      {%else%}
+      <button type="button" class="btn btn-warning"><a href="{% url 'signlog:deletejoin' pk=groups_detail.pk %}">Leave</a></button>
+        {% endif %}
+       {% else %}
+       <button type="button" class="btn btn-warning"><a href="{% url 'signlog:updatejoin' pk=groups_detail.pk %}">Join</a></button>
+      {% endif %}
+       </ol>
+      
+</form>
+{% if groups_detail.cpost %}
+<h3 style="font-weight: 1500;">All the Post in Group {{groups_detail.name}}</h3>
+<br>
+<ol style="margin-left: 15px;">
+{% for post in groups_detail.posts.all %}
+<h5 style="font-weight: 900;"><li>{{post.Message}}</li></h5>
+<p style="font-weight: 400;">{{post.created_by}}</p>
+
+<p style="font-weight: 300;"><a href="{% url 'signlog:postlist' pk=post.pk %}">@{{post.created_by}}</a> {{post.dt}}</p>
+<hr>
+
+{%endfor%}
+</ol>
+{% else %}
+<h3> No Posts Yet! </h3>
+{% endif %}
+{% endblock %}

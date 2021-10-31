@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block body_block%}
+{% if error %}
+<h4>{{ error }}</h4>
+{% endif %}
+<h3 style="width: 100%;display: flex;justify-content: center;">SignUp</h3>
+<div class="container" style="margin-top: 2rem;">
+<div class="ff"  style="display: flex;justify-content: center;position: relative; align-items: center;margin-top: 0rem;margin-left: -14rem;"></div>
+    <form method='POST' action="{%url 'signlog:register'%}" style="display: flex;justify-content: space-evenly;align-items: center;flex-direction: column;position:absolute; padding-left:45rem;">
+        {% csrf_token %}
+        
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label for="exampleInputName" class="form-label">Name</label>
+                <input style="margin-left: 20px;" type="name"  name='Name' id="exampleInputName" >
+                  </div>
+                </div>
+                <br>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input style="margin-left: 20px;" type="email" id="exampleInputEmail1" name='Email'>
+              </div>
+               <br>
+
+            
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                  <label style="margin-right: 15px;" for="exampleInputPassword1" class="form-label">Password</label>
+                  <input style="margin-right: 25px;" type="password" name='Password' id="exampleInputPassword1">
+                </div>
+                </div>
+                <br>
+
+            
+            
+            <button style="margin-right: 50px;" type="submit" class="btn btn-primary">Submit</button>
+          
+    </form>
+</div>
+</div>
+
+{%endblock%}
